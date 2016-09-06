@@ -23,5 +23,35 @@ namespace TrafficApplication
             this.leftLaneOnly = leftLaneOnly;
             this.speedFluctuates = speedFluctuates;
         }
+
+        public Speed getSpeed()
+        {
+            return speed;
+        }
+
+        public PassingPersonality getPersonality()
+        {
+            return personality;
+        }
+
+        public Attitude getAttitude()
+        {
+            return attitude;
+        }
+
+        public void setPersonality(PassingPersonality personality)
+        {
+            this.personality = personality;
+        }
+
+        public void setSpeed(Speed speed)
+        {
+            this.speed = speed;
+        }
+
+        public void setAttitude(Attitude attitude)
+        {
+            this.attitude = attitude;
+        }
     }
 }

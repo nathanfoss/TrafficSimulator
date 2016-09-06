@@ -1,1 +1,11 @@
 C:\Users\Nathan\Desktop\CS Projects\TrafficApplication\TrafficApplication\bin\Debug\TrafficApplication.exe.config
+C:\Users\Nathan\Desktop\CS Projects\TrafficApplication\TrafficApplication\bin\Debug\TrafficApplication.exe
+C:\Users\Nathan\Desktop\CS Projects\TrafficApplication\TrafficApplication\bin\Debug\TrafficApplication.pdb
+C:\Users\Nathan\Desktop\CS Projects\TrafficApplication\TrafficApplication\bin\Debug\MathNet.Numerics.dll
+C:\Users\Nathan\Desktop\CS Projects\TrafficApplication\TrafficApplication\bin\Debug\MathNet.Numerics.xml
+C:\Users\Nathan\Desktop\CS Projects\TrafficApplication\TrafficApplication\obj\Debug\TrafficApplication.csprojResolveAssemblyReference.cache
+C:\Users\Nathan\Desktop\CS Projects\TrafficApplication\TrafficApplication\obj\Debug\TrafficApplication.exe
+C:\Users\Nathan\Desktop\CS Projects\TrafficApplication\TrafficApplication\obj\Debug\TrafficApplication.pdb
+C:\Users\Nathan\Source\Repos\TrafficSimulator\TrafficApplication\bin\Debug\TrafficApplication.exe.config
+C:\Users\Nathan\Source\Repos\TrafficSimulator\TrafficApplication\obj\Debug\TrafficApplication.exe
+C:\Users\Nathan\Source\Repos\TrafficSimulator\TrafficApplication\obj\Debug\TrafficApplication.pdb

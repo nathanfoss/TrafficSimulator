@@ -17,5 +17,15 @@ namespace TrafficApplication
             this.lanes = lanes;
             this.speedLimit = speedLimit;
         }
+
+        public int getLanes()
+        {
+            return lanes;
+        }
+
+        public int getSpeedLimit()
+        {
+            return speedLimit;
+        }
     }
 }

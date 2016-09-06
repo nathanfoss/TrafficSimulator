@@ -8,12 +8,14 @@ namespace TrafficApplication
 {
     class TrafficHandler
     {
-        private Vehicle[] vehicles; //Sorted array of vehicles
+        private List<Vehicle> vehicles; //Sorted array of vehicles
         private Road highway; //I think I need this just for the lanes
 
-        public TrafficHandler(int lanes, int speedLimit, int trafficLevel) //traffic level tells system how many vehicles to create
+        public TrafficHandler(Road highway, List<Vehicle> vehicles) 
         {
-
+            this.highway = highway;
+            this.vehicles = vehicles;
+            
         }
 
         public bool isCarAhead()

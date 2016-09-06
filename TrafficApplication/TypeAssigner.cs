@@ -14,7 +14,7 @@ namespace TrafficApplication
 
         }
 
-        public Type AssignType()
+        public Type assignType()
         {
             Normal normalDistribution = new Normal();
             double value = normalDistribution.Sample();
