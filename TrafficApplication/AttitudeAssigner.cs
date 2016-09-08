@@ -30,7 +30,7 @@ namespace TrafficApplication
             {
                 return Attitude.AVERAGE; //~47% of drivers
             }
-            else if (value < 1.64)
+            else if (value < .86)
             {
                 return Attitude.NERVOUS; //~7% of drivers
             }
@@ -40,7 +40,7 @@ namespace TrafficApplication
             }
             else
             {
-                return Attitude.ROAD_RAGE;
+                return Attitude.ROAD_RAGE; //~5% of drivers
             }
         }
     }
