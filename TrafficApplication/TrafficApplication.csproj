@@ -39,6 +39,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +65,12 @@
     <Compile Include="SpeedAssigner.cs" />
     <Compile Include="SpeedHandler.cs" />
     <Compile Include="TrafficBuilder.cs" />
+    <Compile Include="TrafficForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrafficForm.Designer.cs">
+      <DependentUpon>TrafficForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrafficHandler.cs" />
     <Compile Include="Type.cs" />
     <Compile Include="TypeAssigner.cs" />
@@ -70,6 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TrafficForm.resx">
+      <DependentUpon>TrafficForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

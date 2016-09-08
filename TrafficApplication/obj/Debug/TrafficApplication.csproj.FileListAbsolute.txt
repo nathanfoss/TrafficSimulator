@@ -14,3 +14,5 @@ C:\Users\Nathan\Source\Repos\TrafficSimulator\TrafficApplication\bin\Debug\Traff
 C:\Users\Nathan\Source\Repos\TrafficSimulator\TrafficApplication\bin\Debug\MathNet.Numerics.dll
 C:\Users\Nathan\Source\Repos\TrafficSimulator\TrafficApplication\bin\Debug\MathNet.Numerics.xml
 C:\Users\Nathan\Source\Repos\TrafficSimulator\TrafficApplication\obj\Debug\TrafficApplication.csprojResolveAssemblyReference.cache
+C:\Users\Nathan\Source\Repos\TrafficSimulator\TrafficApplication\obj\Debug\TrafficApplication.TrafficForm.resources
+C:\Users\Nathan\Source\Repos\TrafficSimulator\TrafficApplication\obj\Debug\TrafficApplication.csproj.GenerateResource.Cache
