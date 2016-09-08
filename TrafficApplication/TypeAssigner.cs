@@ -14,25 +14,25 @@
             {
                 return Type.MOTORCYCLE; //1% of cars on the road
             }
-            else if (value < -1.75)
+            else if (value < -1)
             {
-                return Type.SEMI; //3% of cars on the road
+                return Type.SEMI; //15% of cars on the road
             }
-            else if (value < -.84)
+            else if (value < -.47)
             {
                 return Type.PICKUP; //~16% of cars on the road
             }
-            else if (value < .26)
+            else if (value < .47)
             {
-                return Type.SEDAN; //~40% of cars on the road
+                return Type.SEDAN; //~36% of cars on the road
             }
-            else if (value < .88)
+            else if (value < 1.05)
             {
-                return Type.COMPACT; //21% of cars on the road
+                return Type.COMPACT; //19% of cars on the road
             }
             else
             {
-                return Type.MINIVAN; //18% of cars on the road
+                return Type.MINIVAN; //14% of cars on the road
             }
         }
     }
