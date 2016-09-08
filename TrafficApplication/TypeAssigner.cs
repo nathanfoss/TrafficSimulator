@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TrafficApplication
 {
-    class TypeAssigner
+    class TypeAssigner : Assigner
     {
         public TypeAssigner()
         {
@@ -16,8 +16,7 @@ namespace TrafficApplication
 
         public Type assignType()
         {
-            Normal normalDistribution = new Normal();
-            double value = normalDistribution.Sample();
+            double value = NormalDistributionValue();
             if (value < -2.33)
             {
                 return Type.MOTORCYCLE; //1% of cars on the road

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TrafficApplication
 {
-    class AttitudeAssigner
+    class AttitudeAssigner : Assigner
     {
         public AttitudeAssigner()
         {
@@ -16,8 +16,7 @@ namespace TrafficApplication
 
         public Attitude AssignAttitude()
         {
-            Normal normalDistribution = new Normal();
-            double value = normalDistribution.Sample();
+            double value = NormalDistributionValue();
             if (value < -1.64)
             {
                 return Attitude.HAPPY; //5% of drivers

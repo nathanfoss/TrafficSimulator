@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MathNet.Numerics.Distributions;
+
 
 namespace TrafficApplication
 {
     class Assigner
     {
+
+        public Assigner() { }
+
+        public double NormalDistributionValue()
+        {
+            Normal normalDistribution = new Normal();
+            double value = normalDistribution.Sample();
+            return value;
+        }
+        
     }
 }

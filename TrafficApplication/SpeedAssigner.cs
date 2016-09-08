@@ -2,7 +2,7 @@
 
 namespace TrafficApplication
 {
-    class SpeedAssigner
+    class SpeedAssigner : Assigner
     {
         public SpeedAssigner()
         {
@@ -11,8 +11,7 @@ namespace TrafficApplication
 
         public Speed AssignSpeed()
         {
-            Normal normalDistribution = new Normal();
-            double value = normalDistribution.Sample();
+            double value = NormalDistributionValue();
             if (value < -1.64)
             {
                 return Speed.GRANDMA; //5% of drivers

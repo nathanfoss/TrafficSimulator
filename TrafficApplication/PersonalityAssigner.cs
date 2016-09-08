@@ -3,7 +3,7 @@
 
 namespace TrafficApplication
 {
-    class PersonalityAssigner
+    class PersonalityAssigner : Assigner
     {
 
         public PersonalityAssigner()
@@ -13,8 +13,7 @@ namespace TrafficApplication
 
         public PassingPersonality AssignPersonality()
         {
-            Normal normalDistribution = new Normal();
-            double value = normalDistribution.Sample();
+            double value = NormalDistributionValue();
             if (value < -1.64)
             {
                 return PassingPersonality.TIMID; //5% of drivers
