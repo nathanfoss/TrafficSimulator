@@ -8,22 +8,22 @@ namespace TrafficApplication
 {
     class SpeedHandler
     {
-        private int speedAdjust;
+        private int SpeedAdjust;
 
 
         public SpeedHandler(Speed speed)
         {
-            speedAdjust = setSpeedAdjust(speed);
+            SpeedAdjust = SetSpeedAdjust(speed);
         }
 
 
-        public int getSpeedAdjust()
+        public int GetSpeedAdjust()
         {
-            return speedAdjust;
+            return SpeedAdjust;
         }
 
 
-        private int setSpeedAdjust(Speed speed)
+        private int SetSpeedAdjust(Speed speed)
         {
             int speedAdjust = 5; //defaults to drivers driving the speed Limit +5mph
 

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TrafficApplication
+﻿namespace TrafficApplication
 {
     class AttitudeHandler
     {
-        private int speedAdjust;
-        private int personalityAdjust;
+        private int SpeedAdjust;
+        private int PersonalityAdjust;
         //Positive emotions make people better drivers, negative emotions make people more dangerous
         //Adverse traffic conditions make people angrier
 
@@ -18,14 +12,14 @@ namespace TrafficApplication
             setAdjustments(attitude);
         }
 
-        public int getSpeedAdjust()
+        public int GetSpeedAdjust()
         {
-            return speedAdjust;
+            return SpeedAdjust;
         }
 
-        public int getPersonalityAdjust()
+        public int GetPersonalityAdjust()
         {
-            return personalityAdjust;
+            return PersonalityAdjust;
         }
 
         private void setAdjustments(Attitude attitude)
@@ -34,38 +28,38 @@ namespace TrafficApplication
             {
                 case Attitude.HAPPY:
                     {
-                        speedAdjust = -2;
-                        personalityAdjust = -2;
+                        SpeedAdjust = -2;
+                        PersonalityAdjust = -2;
                         break;
                     }
                 case Attitude.CALM:
                     {
-                        speedAdjust = -1;
-                        personalityAdjust = -1;
+                        SpeedAdjust = -1;
+                        PersonalityAdjust = -1;
                         break;
                     }
                 case Attitude.AVERAGE:
                     {
-                        speedAdjust = 0;
-                        personalityAdjust = 0;
+                        SpeedAdjust = 0;
+                        PersonalityAdjust = 0;
                         break;
                     }
                 case Attitude.NERVOUS:
                     {
-                        speedAdjust = 1;
-                        personalityAdjust = 1;
+                        SpeedAdjust = 1;
+                        PersonalityAdjust = 1;
                         break;
                     }
                 case Attitude.RUSHED:
                     {
-                        speedAdjust = 2;
-                        personalityAdjust = 2;
+                        SpeedAdjust = 2;
+                        PersonalityAdjust = 2;
                         break;
                     }
                 case Attitude.ROAD_RAGE:
                     {
-                        speedAdjust = 3;
-                        personalityAdjust = 3;
+                        SpeedAdjust = 3;
+                        PersonalityAdjust = 3;
                         break;
                     }
             }

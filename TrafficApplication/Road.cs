@@ -1,31 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TrafficApplication
+﻿namespace TrafficApplication
 {
     class Road
     {
-        private int lanes;
-        private int speedLimit;
+        private int Lanes;
+        private int SpeedLimit;
 
         //TODO add road conditions, turns, construction, etc.
         public Road(int lanes, int speedLimit)
         {
-            this.lanes = lanes;
-            this.speedLimit = speedLimit;
+            Lanes = lanes;
+            SpeedLimit = speedLimit;
         }
 
-        public int getLanes()
+        public int GetLanes()
         {
-            return lanes;
+            return Lanes;
         }
 
-        public int getSpeedLimit()
+        public int GetSpeedLimit()
         {
-            return speedLimit;
+            return SpeedLimit;
         }
     }
 }

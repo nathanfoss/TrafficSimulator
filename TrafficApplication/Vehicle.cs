@@ -1,87 +1,81 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TrafficApplication
+﻿namespace TrafficApplication
 {
 
     class Vehicle
     {
-        private Type type;
-        private double size;
-        private int drivingLane;
-        private double position;
-        private Driver driver;
-        private int desiredVelocity;
-        private int actualVelocity;
-        private Road road;
-        private SpeedHandler speedHandler;
-        private int speedAdjust;
+        private Type Type;
+        private double Size;
+        private int DrivingLane;
+        private double Position;
+        private Driver Driver;
+        private int DesiredVelocity;
+        private int ActualVelocity;
+        private Road Road;
+        private SpeedHandler SpeedHandler;
+        private int SpeedAdjust;
 
         //Somehow assign vehicle size based on the vehicle type
         public Vehicle(Type type, int drivingLane, double position, Driver driver, Road road)
         {
-            this.type = type;
-            this.drivingLane = drivingLane;
-            this.position = position;
-            this.driver = driver;
-            this.road = road;
-            desiredVelocity = setVelocity(road, driver);
-            actualVelocity = desiredVelocity; //initially these are the same
-            size = assignSize(type);      
+            Type = type;
+            DrivingLane = drivingLane;
+            Position = position;
+            Driver = driver;
+            Road = road;
+            DesiredVelocity = SetDesiredVelocity(road, driver);
+            ActualVelocity = DesiredVelocity; //initially these are the same
+            Size = AssignSize(type);      
         }
 
-       public Type getType()
+       public Type GetVehicleType()
         {
-            return type;
+            return Type;
         }
 
-        public double getSize()
+        public double GetSize()
         {
-            return size;
+            return Size;
         }
 
-        public int getLane()
+        public int GetLane()
         {
-            return drivingLane;
+            return DrivingLane;
         }
 
-        public double getPosition()
+        public double GetPosition()
         {
-            return position;
+            return Position;
         }
 
-        public Driver getDriver()
+        public Driver GetDriver()
         {
-            return driver;
+            return Driver;
         }
 
-        public int getVelocity()
+        public int GetVelocity()
         {
-            return actualVelocity;
+            return ActualVelocity;
         }
 
         //Somehow figure out where all the other cars are
-        public void changeLanes(int newLane)
+        public void ChangeLanes(int newLane)
         {
-            if (drivingLane != newLane) //in case something went wrong
+            if (DrivingLane != newLane) //in case something went wrong
             {
-                if(canChangeLanes(newLane))
+                if(CanChangeLanes(newLane))
                 {
-                    drivingLane = newLane;
+                    DrivingLane = newLane;
                 }
             }
         }
-         private double assignSize(Type type)
+         private double AssignSize(Type type)
         {
             double size = 0.0;
-            size = assignSize(type, size);
+            size = AssignSize(type, size);
             return size;
         }
 
-        private static double assignSize(Type type, double size)
+        private static double AssignSize(Type type, double size)
         {
             switch (type)
             {
@@ -120,21 +114,21 @@ namespace TrafficApplication
             return size;
         }
 
-        private int setVelocity(Road road, Driver driver)
+        private int SetDesiredVelocity(Road road, Driver driver)
         {
-            int desiredVelocity = road.getSpeedLimit(); // initialized to the speedLimit
-            speedHandler = new SpeedHandler(driver.getSpeed());
-            speedAdjust = speedHandler.getSpeedAdjust();
-            if (type == Type.SEMI)
+            int desiredVelocity = road.GetSpeedLimit(); // initialized to the speedLimit
+            SpeedHandler = new SpeedHandler(driver.GetSpeed());
+            SpeedAdjust = SpeedHandler.GetSpeedAdjust();
+            if (Type == Type.SEMI)
             {
-                speedAdjust -= 5;
+                SpeedAdjust -= 5;
             }
 
-            return desiredVelocity += speedAdjust;
+            return desiredVelocity += SpeedAdjust;
                 
         }
 
-        private bool canChangeLanes(int newLane)
+        private bool CanChangeLanes(int newLane)
         {
             //if the gap is big enough for this driver's personality, change lanes
             //uses: driver's personality (PersonalityHandler), car behind in other lane, car ahead in other lane

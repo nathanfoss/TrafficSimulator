@@ -1,11 +1,4 @@
-﻿using MathNet.Numerics.Distributions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TrafficApplication
+﻿namespace TrafficApplication
 {
     class AttitudeAssigner : Assigner
     {

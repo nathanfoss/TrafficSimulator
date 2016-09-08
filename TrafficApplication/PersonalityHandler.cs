@@ -8,22 +8,22 @@ namespace TrafficApplication
 {
     class PersonalityHandler
     {
-        private double requiredMergingGap;
+        private double RequiredMergingGap;
 
 
         public PersonalityHandler(PassingPersonality personality)
         {
-            requiredMergingGap = setMergingDistance(personality);
+            RequiredMergingGap = SetMergingDistance(personality);
         }
 
 
-        public double getMergingDistance()
+        public double GetMergingDistance()
         {
-            return requiredMergingGap;
+            return RequiredMergingGap;
         }
 
 
-        private double setMergingDistance(PassingPersonality personality)
+        private double SetMergingDistance(PassingPersonality personality)
         {
             double mergingGap = 0.0416667; //in case it doesn't get reassigned properly, assign it to the average distance
 

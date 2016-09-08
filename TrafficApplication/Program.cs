@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace TrafficApplication
 {
@@ -18,28 +16,28 @@ namespace TrafficApplication
             int sedanCount = 0;
             int pickupCount = 0;
             TrafficBuilder builder = new TrafficBuilder(2, 65, 50);
-            List<Vehicle> vehicles = builder.getVehicles();
+            List<Vehicle> vehicles = builder.GetVehicles();
             Vehicle[] traffic = vehicles.ToArray();
             for(int i = 0; i < traffic.Length; i++)
             {
                 tempVehicle = traffic[i];
-                if(tempVehicle.getType() == Type.COMPACT)
+                if(tempVehicle.GetVehicleType() == Type.COMPACT)
                 {
                     compactCount++;
                 }
-                else if(tempVehicle.getType() == Type.SEDAN)
+                else if(tempVehicle.GetVehicleType() == Type.SEDAN)
                 {
                     sedanCount++;
                 }
-                else if (tempVehicle.getType() == Type.MINIVAN)
+                else if (tempVehicle.GetVehicleType() == Type.MINIVAN)
                 {
                     minivanCount++;
                 }
-                else if (tempVehicle.getType() == Type.PICKUP)
+                else if (tempVehicle.GetVehicleType() == Type.PICKUP)
                 {
                     pickupCount++;
                 }
-                else if (tempVehicle.getType() == Type.SEMI)
+                else if (tempVehicle.GetVehicleType() == Type.SEMI)
                 {
                     semiCount++;
                 }

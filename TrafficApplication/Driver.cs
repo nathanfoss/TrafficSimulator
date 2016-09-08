@@ -9,49 +9,49 @@ namespace TrafficApplication
 
     class Driver
     {
-        private PassingPersonality personality;
-        private Speed speed;
-        private Attitude attitude;
-        private bool leftLaneOnly;
-        private bool speedFluctuates;
+        private PassingPersonality Personality;
+        private Speed Speed;
+        private Attitude Attitude;
+        private bool LeftLaneOnly;
+        private bool SpeedFluctuates;
 
         public Driver(PassingPersonality personality, Speed speed, Attitude attitude, bool leftLaneOnly = false, bool speedFluctuates = false)
         {
-            this.personality = personality;
-            this.speed = speed;
-            this.attitude = attitude;
-            this.leftLaneOnly = leftLaneOnly;
-            this.speedFluctuates = speedFluctuates;
+            Personality = personality;
+            Speed = speed;
+            Attitude = attitude;
+            LeftLaneOnly = leftLaneOnly;
+            SpeedFluctuates = speedFluctuates;
         }
 
-        public Speed getSpeed()
+        public Speed GetSpeed()
         {
-            return speed;
+            return Speed;
         }
 
-        public PassingPersonality getPersonality()
+        public PassingPersonality GetPersonality()
         {
-            return personality;
+            return Personality;
         }
 
-        public Attitude getAttitude()
+        public Attitude GetAttitude()
         {
-            return attitude;
+            return Attitude;
         }
 
-        public void setPersonality(PassingPersonality personality)
+        public void SetPersonality(PassingPersonality personality)
         {
-            this.personality = personality;
+            Personality = personality;
         }
 
-        public void setSpeed(Speed speed)
+        public void SetSpeed(Speed speed)
         {
-            this.speed = speed;
+            Speed = speed;
         }
 
-        public void setAttitude(Attitude attitude)
+        public void SetAttitude(Attitude attitude)
         {
-            this.attitude = attitude;
+            Attitude = attitude;
         }
     }
 }

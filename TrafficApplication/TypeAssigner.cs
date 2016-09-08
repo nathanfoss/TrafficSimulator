@@ -1,11 +1,4 @@
-﻿using MathNet.Numerics.Distributions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TrafficApplication
+﻿namespace TrafficApplication
 {
     class TypeAssigner : Assigner
     {
@@ -14,7 +7,7 @@ namespace TrafficApplication
 
         }
 
-        public Type assignType()
+        public Type AssignType()
         {
             double value = NormalDistributionValue();
             if (value < -2.33)
