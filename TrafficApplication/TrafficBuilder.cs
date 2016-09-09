@@ -26,7 +26,7 @@ namespace TrafficApplication
                 Driver tempDriver = new Driver(PersonalityAssigner.AssignPersonality(), 
                     SpeedAssigner.AssignSpeed(),AttitudeAssigner.AssignAttitude());
                 
-                Vehicle tempVehicle = new Vehicle(TypeAssigner.AssignType(), Random.Next(0, 2), Random.NextDouble() * 2, 
+                Vehicle tempVehicle = new Vehicle(TypeAssigner.AssignType(), Random.Next(0, 2), Random.Next(1, 200) * 52, 
                     tempDriver, Road);
                 Vehicles.Add(tempVehicle);
                 //position will be anywhere random from 0-2 FOR NOW

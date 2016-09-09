@@ -8,56 +8,56 @@ namespace TrafficApplication
 {
     class PersonalityHandler
     {
-        private double RequiredMergingGap;
+        private int DrivingGap;
 
 
         public PersonalityHandler(PassingPersonality personality)
         {
-            RequiredMergingGap = SetMergingDistance(personality);
+            DrivingGap = SetDrivingGap(personality);
         }
 
 
-        public double GetMergingDistance()
+        public int GetDrivingGap()
         {
-            return RequiredMergingGap;
+            return DrivingGap;
         }
 
 
-        private double SetMergingDistance(PassingPersonality personality)
+        private int SetDrivingGap(PassingPersonality personality)
         {
-            double mergingGap = 0.0416667; //in case it doesn't get reassigned properly, assign it to the average distance
+            int drivingGap = 350; //in case it doesn't get reassigned properly, assign it to the average distance
 
             switch (personality)
             {
                 case PassingPersonality.TIMID:
                     {
-                        mergingGap = 0.0719697; //Gap of 380 feet in miles
+                        drivingGap = 350; //Gap of 350
                         break;
                     }
                 case PassingPersonality.CAUTIOUS:
                     {
-                        mergingGap = 0.0568182; //Gap of 300 feet in miles
+                        drivingGap = 250; //Gap of 250 feet
                         break;
                     }
                 case PassingPersonality.DEFENSIVE:
                     {
-                        mergingGap = 0.0416667; //Gap of 220 feet in miles
+                        drivingGap = 165; //Gap of 165 feet
                         break;
                     }
                 case PassingPersonality.AGGRESSIVE:
                     {
-                        mergingGap = 0.0265152; //Gap of 140 feet in miles
+                        drivingGap = 90; //Gap of 90 feet
                         break;
                     }
                 case PassingPersonality.JERK:
                     {
-                        mergingGap = 0.0113636; //Gap of 60 feet in miles
+                        drivingGap = 25; //Gap of 25 feet
                         break;
                     }
 
             }
 
-            return mergingGap; ;
+            return drivingGap;
         }
         
     }

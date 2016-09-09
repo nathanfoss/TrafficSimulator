@@ -33,15 +33,15 @@ namespace TrafficApplication
                 Vehicle[] traffic = vehicles.ToArray();
                 int x = 0;
                 int y = 0;
-                int length = 0;
+                int vehicleSize = 0;
 
                 for (int i = 0; i < traffic.Length; i++)
                 {
                     tempVehicle = traffic[i];
-                    x = Convert.ToInt32(tempVehicle.GetPosition() * 5280);
+                    x = tempVehicle.GetPosition();
                     y = tempVehicle.GetLane() * 100;
-                    length = Convert.ToInt32(tempVehicle.GetSize() * 5280);
-                    g.FillRectangle(new SolidBrush(Color.Black), x, y, length, 50);
+                    vehicleSize = tempVehicle.GetSize();
+                    g.FillRectangle(new SolidBrush(Color.Black), x, y, vehicleSize, 50);
                 }
             }
         }

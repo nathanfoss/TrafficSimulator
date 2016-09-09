@@ -4,9 +4,9 @@
     class Vehicle
     {
         private Type Type;
-        private double Size;
+        private int Size;
         private int DrivingLane;
-        private double Position;
+        private int Position;
         private Driver Driver;
         private int DesiredVelocity;
         private int ActualVelocity;
@@ -15,7 +15,7 @@
         private int SpeedAdjust;
 
         //Somehow assign vehicle size based on the vehicle type
-        public Vehicle(Type type, int drivingLane, double position, Driver driver, Road road)
+        public Vehicle(Type type, int drivingLane, int position, Driver driver, Road road)
         {
             Type = type;
             DrivingLane = drivingLane;
@@ -32,7 +32,7 @@
             return Type;
         }
 
-        public double GetSize()
+        public int GetSize()
         {
             return Size;
         }
@@ -42,7 +42,7 @@
             return DrivingLane;
         }
 
-        public double GetPosition()
+        public int GetPosition()
         {
             return Position;
         }
@@ -68,45 +68,45 @@
                 }
             }
         }
-         private double AssignSize(Type type)
+         private int AssignSize(Type type)
         {
-            double size = 0.0;
+            int size = 0;
             size = AssignSize(type, size);
             return size;
         }
 
-        private static double AssignSize(Type type, double size)
+        private static int AssignSize(Type type, int size)
         {
             switch (type)
             {
                 case Type.COMPACT:
                     {
-                        size = 0.00254104; //161 inches in miles
+                        size = 13; //average compact car is 13 feet long
                         break;
                     }
                 case Type.MINIVAN:
                     {
-                        size = 0.00315657; //200 inches in miles
+                        size = 17; //average minivan is 17 feet long
                         break;
                     }
                 case Type.MOTORCYCLE:
                     {
-                        size = 0.001488321; //94 inches in miles
+                        size = 8; //average motorcycle is 8 feet long
                         break;
                     }
                 case Type.PICKUP:
                     {
-                        size = 0.00347222; //220 inches in miles
+                        size = 18; //average pickup truck is 18 feet long
                         break;
                     }
                 case Type.SEDAN:
                     {
-                        size = 0.00276199; //175 inches in miles
+                        size = 15; //average sedan is 15 feet long
                         break;
                     }
                 case Type.SEMI:
                     {
-                        size = 0.0113636; //60 feet in miles
+                        size = 60; //average semi truck + trailer is 60 feet long
                         break;
                     }
             }
