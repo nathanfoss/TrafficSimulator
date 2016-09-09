@@ -48,8 +48,9 @@ namespace TrafficApplication
 
         private void button1_Click(object sender, EventArgs e)
         {
-            paintTraffic();
             button1.Hide();
+            paintTraffic();
+            
         }
     }
 

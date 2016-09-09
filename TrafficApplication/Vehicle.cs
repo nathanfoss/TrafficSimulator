@@ -13,6 +13,7 @@
         private Road Road;
         private SpeedHandler SpeedHandler;
         private int SpeedAdjust;
+        private TypeHandler TypeHandler = new TypeHandler();
 
         //Somehow assign vehicle size based on the vehicle type
         public Vehicle(Type type, int drivingLane, int position, Driver driver, Road road)
@@ -24,7 +25,7 @@
             Road = road;
             DesiredVelocity = SetDesiredVelocity(road, driver);
             ActualVelocity = DesiredVelocity; //initially these are the same
-            Size = AssignSize(type);      
+            Size = TypeHandler.GetSize(type);      
         }
 
        public Type GetVehicleType()
@@ -68,51 +69,7 @@
                 }
             }
         }
-         private int AssignSize(Type type)
-        {
-            int size = 0;
-            size = AssignSize(type, size);
-            return size;
-        }
-
-        private static int AssignSize(Type type, int size)
-        {
-            switch (type)
-            {
-                case Type.COMPACT:
-                    {
-                        size = 13; //average compact car is 13 feet long
-                        break;
-                    }
-                case Type.MINIVAN:
-                    {
-                        size = 17; //average minivan is 17 feet long
-                        break;
-                    }
-                case Type.MOTORCYCLE:
-                    {
-                        size = 8; //average motorcycle is 8 feet long
-                        break;
-                    }
-                case Type.PICKUP:
-                    {
-                        size = 18; //average pickup truck is 18 feet long
-                        break;
-                    }
-                case Type.SEDAN:
-                    {
-                        size = 15; //average sedan is 15 feet long
-                        break;
-                    }
-                case Type.SEMI:
-                    {
-                        size = 60; //average semi truck + trailer is 60 feet long
-                        break;
-                    }
-            }
-
-            return size;
-        }
+        
 
         private int SetDesiredVelocity(Road road, Driver driver)
         {
