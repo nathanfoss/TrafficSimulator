@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TrafficApplication
@@ -19,27 +14,42 @@ namespace TrafficApplication
 
         private void TrafficForm_Load(object sender, EventArgs e)
         {
-            Vehicle tempVehicle;
-            TrafficBuilder builder = new TrafficBuilder(2, 65, 50);
-            List<Vehicle> vehicles = builder.GetVehicles();
-            List<Point> points = new List<Point>();
-            Vehicle[] traffic = vehicles.ToArray();
 
-            for (int i = 0; i < traffic.Length; i++)
+        }
+        private void TrafficForm_Paint(object sender, PaintEventArgs e)
+        {
+            paintTraffic();
+            Invalidate();
+        }
+
+        private void paintTraffic()
+        {
+            
+            using (Graphics g = CreateGraphics())
             {
-                tempVehicle = traffic[i];
-                int x = tempVehicle.GetLane();
-                int y = Convert.ToInt32(tempVehicle.GetPosition() * 5280);
-                Point point = new Point(x, y);
-                points.Add(point);
-            }
+                Vehicle tempVehicle;
+                TrafficBuilder builder = new TrafficBuilder(2, 65, 50);
+                List<Vehicle> vehicles = builder.GetVehicles();
+                Vehicle[] traffic = vehicles.ToArray();
+                int x = 0;
+                int y = 0;
+                int length = 0;
 
-            Point[] pointsArray = points.ToArray();
-
-            for (int i = 0; i < pointsArray.Length; i++)
-            {
-                CreateGraphics().FillRectangle(new SolidBrush(Color.Black), pointsArray[i].X, pointsArray[i].Y, 1, 1);
+                for (int i = 0; i < traffic.Length; i++)
+                {
+                    tempVehicle = traffic[i];
+                    x = Convert.ToInt32(tempVehicle.GetPosition() * 5280);
+                    y = tempVehicle.GetLane() * 100;
+                    length = Convert.ToInt32(tempVehicle.GetSize() * 5280);
+                    g.FillRectangle(new SolidBrush(Color.Black), x, y, length, 50);
+                }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            paintTraffic();
+            button1.Hide();
         }
     }
 
