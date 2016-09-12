@@ -1,5 +1,8 @@
 ﻿namespace TrafficApplication
 {
+    /// <summary>
+    /// Extends Assigner base class. Supports random assignment of an attitude to a Driver object
+    /// </summary>
     class AttitudeAssigner : Assigner
     {
         public AttitudeAssigner()
@@ -7,6 +10,11 @@
 
         }
 
+        /// <summary>
+        /// Generates a normal distribution value and assigns an attitude based on the value.
+        /// More moderate attitudes are more likely and extremes are less frequent.
+        /// </summary>
+        /// <returns></returns>
         public Attitude AssignAttitude()
         {
             double value = NormalDistributionValue();

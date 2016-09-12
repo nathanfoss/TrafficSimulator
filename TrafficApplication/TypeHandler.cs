@@ -2,13 +2,21 @@
 {
     class TypeHandler
     {
-        private int VehicleSize;
 
+        /// <summary>
+        /// Constructor for the TypeHandler class. This class has no data members and simply 
+        /// assigns an int size value based on the vehicle Type
+        /// </summary>
         public TypeHandler()
         {
 
         }
 
+        /// <summary>
+        /// Gets the size of the vehicle assigned by the private method SetSize
+        /// </summary>
+        /// <param name="type">The Enumerated Type of the Vehicle</param>
+        /// <returns>The size, in feet, of the vehicle</returns>
         public int GetSize(Type type)
         {
             int size = 0;
@@ -16,6 +24,12 @@
             return size;
         }
 
+        /// <summary>
+        /// Sets the vehicle size based on the average size of different types of vehicles
+        /// </summary>
+        /// <param name="type">The Enumerated Type of Vehicle</param>
+        /// <param name="size"></param>
+        /// <returns>The size, in feet, of the vehicle</returns>
         private static int SetSize(Type type, int size)
         {
             switch (type)

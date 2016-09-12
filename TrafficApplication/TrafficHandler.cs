@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TrafficApplication
 {
+    /// <summary>
+    /// TrafficHandler class supports ongoing traffic behavior --- Still not sure what this will look like
+    /// </summary>
     class TrafficHandler
     {
         private List<Vehicle> Vehicles; //Sorted array of vehicles

@@ -45,10 +45,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 322);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1302, 302);
             this.Controls.Add(this.button1);
             this.Name = "TrafficForm";
-            this.Text = "TrafficForm";
+            this.Text = "Traffic Simulator";
             this.Load += new System.EventHandler(this.TrafficForm_Load);
             this.ResumeLayout(false);
 

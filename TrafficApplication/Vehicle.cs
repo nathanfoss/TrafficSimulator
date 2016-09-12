@@ -1,6 +1,8 @@
 ﻿namespace TrafficApplication
 {
-
+    /// <summary>
+    /// Class representing vehicle objects in the Traffic simulator
+    /// </summary>
     class Vehicle
     {
         private Type Type;
@@ -15,7 +17,14 @@
         private int SpeedAdjust;
         private TypeHandler TypeHandler = new TypeHandler();
 
-        //Somehow assign vehicle size based on the vehicle type
+        /// <summary>
+        /// Constructor for the Vehicle class. Creates a vehicle object with the specified parameters.
+        /// </summary>
+        /// <param name="type">Enumerated Type of Vehicle. Used to determine the vehicle's size</param>
+        /// <param name="drivingLane">The lane on the road the vehicle occupies</param>
+        /// <param name="position">The position on the road of the vehicle</param>
+        /// <param name="driver">The driver of the vehicle with included personality factors</param>
+        /// <param name="road">The road the vehicle is driving on. Used to determine driving velocity</param>
         public Vehicle(Type type, int drivingLane, int position, Driver driver, Road road)
         {
             Type = type;
@@ -28,31 +37,46 @@
             Size = TypeHandler.GetSize(type);      
         }
 
-       public Type GetVehicleType()
-        {
-            return Type;
-        }
-
+        /// <summary>
+        /// Returns the size, in feet, of the specified vehicle object
+        /// </summary>
+        /// <returns>Vehicle size in feet</returns>
         public int GetSize()
         {
             return Size;
         }
 
+        /// <summary>
+        /// Retrieves the lane the vehicle occupies
+        /// </summary>
+        /// <returns>Int value of the lane</returns>
         public int GetLane()
         {
             return DrivingLane;
         }
 
+        /// <summary>
+        /// Retrieves the position of the vehicle on the road
+        /// </summary>
+        /// <returns>Integer value specifying the vehicle's position, in feet</returns>
         public int GetPosition()
         {
             return Position;
         }
 
+        /// <summary>
+        /// Retrieves the driver object that determines vehicle behavior
+        /// </summary>
+        /// <returns>Driver object representing the driver of the vehicle</returns>
         public Driver GetDriver()
         {
             return Driver;
         }
 
+        /// <summary>
+        /// Retrieves the driving velocity of the vehicle
+        /// </summary>
+        /// <returns>Integer value of the vehicle's actual velocity in mph</returns>
         public int GetVelocity()
         {
             return ActualVelocity;
@@ -70,7 +94,14 @@
             }
         }
         
-
+        
+        /// <summary>
+        /// Sets the desired velocity of the vehicle based on driver personality and the speed limit
+        /// of the road
+        /// </summary>
+        /// <param name="road">The road the vehicle is driving on</param>
+        /// <param name="driver">The driver of the vehicle with specified personality</param>
+        /// <returns>The driver's desired velocity if no traffic based on personality in mph</returns>
         private int SetDesiredVelocity(Road road, Driver driver)
         {
             int desiredVelocity = road.GetSpeedLimit(); // initialized to the speedLimit
@@ -78,7 +109,7 @@
             SpeedAdjust = SpeedHandler.GetSpeedAdjust();
             if (Type == Type.SEMI)
             {
-                SpeedAdjust -= 5;
+                SpeedAdjust -= 5; //Speed limit for SEMIs is 5mph lower than normal vehicles
             }
 
             return desiredVelocity += SpeedAdjust;

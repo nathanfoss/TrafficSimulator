@@ -1,5 +1,8 @@
 ﻿namespace TrafficApplication
 {
+    /// <summary>
+    /// Extends Assigner base class. Randomly assigns vehicle types based off of a normal distribution table
+    /// </summary>
     class TypeAssigner : Assigner
     {
         public TypeAssigner()
@@ -7,6 +10,11 @@
 
         }
 
+        /// <summary>
+        /// Uses standard normal distribution to assign vehicle types randomly based off percentages of each
+        /// type of vehicle registered in the U.S. (source wikipedia)
+        /// </summary>
+        /// <returns>The randomly assigned Enumerated vehicle Type value</returns>
         public Type AssignType()
         {
             double value = NormalDistributionValue();

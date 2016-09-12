@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TrafficApplication
 {
@@ -16,14 +13,19 @@ namespace TrafficApplication
         private SpeedAssigner SpeedAssigner = new SpeedAssigner();
         private Random Random = new Random();
 
-        //traffic level is the vehicles per mile per lane
+        /// <summary>
+        /// Constructor for the TrafficBuilder class. Randomly assigns drivers to cars and places
+        /// them on the road in order of increasing position.
+        /// </summary>
+        /// <param name="lanes">Number of lanes on the road</param>
+        /// <param name="speedLimit">Speed limit of the road</param>
+        /// <param name="trafficLevel">Number of cars per lane per mile</param>
         public TrafficBuilder(int lanes, int speedLimit, int trafficLevel)
         {
             PassingPersonality personality;
             Speed speed;
             Attitude attitude;
             Type type;
-            TypeHandler typeHandler = new TypeHandler();
             int drivingLane = 0;
             int nextAvailablePosition = 0;
             Road = new Road(lanes, speedLimit);
@@ -38,29 +40,39 @@ namespace TrafficApplication
                 Driver tempDriver = new Driver(personality, speed, attitude);
 
                 drivingLane = Random.Next(0, 2); //randomly assign spot on the road
-                nextAvailablePosition = NextAvailablePosition(Vehicles, type, typeHandler, personality, drivingLane);
+                nextAvailablePosition = NextAvailablePosition(Vehicles, type, drivingLane);
 
                 Vehicle tempVehicle = new Vehicle(type, drivingLane , Random.Next(nextAvailablePosition, 
-                    nextAvailablePosition + 350), tempDriver, Road);
+                    nextAvailablePosition + 150), tempDriver, Road);
 
                 Vehicles.Add(tempVehicle);
-                //position will be anywhere random from 0-2 FOR NOW
             }
             
         }
 
+        /// <summary>
+        /// Accessor method for the sorted List of Vehicles created by the TrafficBuilder Constructor
+        /// </summary>
+        /// <returns>The sorted list of vehicles</returns>
         public List<Vehicle> GetVehicles()
         {
             return Vehicles;
         }
 
-        private int NextAvailablePosition(List<Vehicle> vehicles, Type type, TypeHandler handler,
-            PassingPersonality personality, int drivingLane)
+        /// <summary>
+        /// Computes the next available position the specified vehicle type could be placed in the specified lane
+        /// </summary>
+        /// <param name="vehicles">List of Vehicles Sorted by Increasing Position</param>
+        /// <param name="type">Type of Vehicle to be created</param>
+        /// <param name="drivingLane">Lane of the Vehicle to be created</param>
+        /// <returns>Integer value of the first available position for a vehicle in the specified lane</returns>
+        private int NextAvailablePosition(List<Vehicle> vehicles, Type type,  int drivingLane)
         {
+            TypeHandler handler = new TypeHandler();
             int nextAvailablePosition;
             int vehiclePosition = 0;
-            PersonalityHandler personalityHandler = new PersonalityHandler(personality);
-            int drivingGap = personalityHandler.GetDrivingGap();
+            PersonalityHandler personalityHandler;
+            int drivingGap = 0;
             Vehicle tempVehicle;
             int vehicleSize = handler.GetSize(type);
             int count = 0;
@@ -70,7 +82,9 @@ namespace TrafficApplication
                 if(tempVehicle.GetLane() == drivingLane)
                 {
                     count++;
-                    vehiclePosition = tempVehicle.GetPosition();
+                    vehiclePosition = tempVehicle.GetPosition(); 
+                    personalityHandler = new PersonalityHandler(tempVehicle.GetDriver().GetPersonality());
+                    drivingGap = personalityHandler.GetDrivingGap(); //Get driving gap of the car behind
                     break;
                 }
             }

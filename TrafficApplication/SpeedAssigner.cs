@@ -1,7 +1,9 @@
-﻿using MathNet.Numerics.Distributions;
-
+﻿
 namespace TrafficApplication
 {
+    /// <summary>
+    /// Extends Assigner base class. Supports random assignment of Speed preferences based on normal distribution tables
+    /// </summary>
     class SpeedAssigner : Assigner
     {
         public SpeedAssigner()
@@ -9,6 +11,11 @@ namespace TrafficApplication
 
         }
 
+        /// <summary>
+        /// Uses normal distribution with mean = 0 and standard deviation of 1 to randomly assign speed values.
+        /// More moderate speeds are most common, more extreme values are less likely.
+        /// </summary>
+        /// <returns>Randomly assigned Enumerated value indicating Driver's speed preference</returns>
         public Speed AssignSpeed()
         {
             double value = NormalDistributionValue();

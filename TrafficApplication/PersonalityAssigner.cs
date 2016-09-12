@@ -1,8 +1,9 @@
-﻿using MathNet.Numerics.Distributions;
-
-
+﻿
 namespace TrafficApplication
 {
+    /// <summary>
+    /// Extends Assigner base class. Supports assigning Driver personalities using normal distributions
+    /// </summary>
     class PersonalityAssigner : Assigner
     {
 
@@ -11,6 +12,11 @@ namespace TrafficApplication
 
         }
 
+        /// <summary>
+        /// Assigns a personality to a Driver based on a normal distribution with mean = 0 and standard deviation
+        /// = 1. More extreme values are less likely while defensive drivers are most likely.
+        /// </summary>
+        /// <returns></returns>
         public PassingPersonality AssignPersonality()
         {
             double value = NormalDistributionValue();

@@ -7,6 +7,9 @@ namespace TrafficApplication
 {
     public partial class TrafficForm : Form
     {
+        /// <summary>
+        /// Constructor for the TrafficForm class. Initializes the GUI
+        /// </summary>
         public TrafficForm()
         {
             InitializeComponent();
@@ -19,9 +22,12 @@ namespace TrafficApplication
         private void TrafficForm_Paint(object sender, PaintEventArgs e)
         {
             paintTraffic();
-            Invalidate();
+            Invalidate(); //doesn't work...
         }
 
+        /// <summary>
+        /// Creates graphics for each of the Vehicles created by the TrafficBuilder object
+        /// </summary>
         private void paintTraffic()
         {
             
@@ -41,11 +47,17 @@ namespace TrafficApplication
                     x = tempVehicle.GetPosition();
                     y = tempVehicle.GetLane() * 100;
                     vehicleSize = tempVehicle.GetSize();
-                    g.FillRectangle(new SolidBrush(Color.Black), x, y, vehicleSize, 50);
+                    g.FillRectangle(new SolidBrush(Color.Black), x, y, vehicleSize, 20);
                 }
             }
         }
 
+        /// <summary>
+        /// Event Handler for the Start Application button
+        /// uses PaintTraffic method to generate the GUI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             button1.Hide();
