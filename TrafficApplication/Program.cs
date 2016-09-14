@@ -8,7 +8,14 @@ namespace TrafficApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrafficForm());
+            try
+            {
+                Application.Run(new TrafficForm());
+            }
+            catch (System.Exception e)
+            {
+
+            }
         }
     }
 }

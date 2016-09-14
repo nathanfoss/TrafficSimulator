@@ -17,19 +17,18 @@ namespace TrafficApplication
         /// Constructor for the TrafficBuilder class. Randomly assigns drivers to cars and places
         /// them on the road in order of increasing position.
         /// </summary>
-        /// <param name="lanes">Number of lanes on the road</param>
-        /// <param name="speedLimit">Speed limit of the road</param>
+        /// <param name="road">The road the vehicles are driving on</param>
         /// <param name="trafficLevel">Number of cars per lane per mile</param>
-        public TrafficBuilder(int lanes, int speedLimit, int trafficLevel)
+        public TrafficBuilder(Road road, int trafficLevel)
         {
             PassingPersonality personality;
             Speed speed;
             Attitude attitude;
             Type type;
+            Road = road;
             int drivingLane = 0;
             int nextAvailablePosition = 0;
-            Road = new Road(lanes, speedLimit);
-            int totalVehicles = trafficLevel * lanes * 2; //in this case we're creating 2 miles' worth of cars
+            int totalVehicles = trafficLevel * road.GetLanes() * 2; //in this case we're creating 2 miles' worth of cars
             for(int i = 0; i < totalVehicles; i++) //create new vehicle
             {
                 personality = PersonalityAssigner.AssignPersonality();
@@ -78,6 +77,7 @@ namespace TrafficApplication
             int count = 0;
             for(int i = vehicles.Count - 1; i >= 0; i--)
             {
+                count = 0;
                 tempVehicle = vehicles[i];
                 if(tempVehicle.GetLane() == drivingLane)
                 {
@@ -85,17 +85,19 @@ namespace TrafficApplication
                     vehiclePosition = tempVehicle.GetPosition(); 
                     personalityHandler = new PersonalityHandler(tempVehicle.GetDriver().GetPersonality());
                     drivingGap = personalityHandler.GetDrivingGap(); //Get driving gap of the car behind
-                    break;
+                    break; //finds the last car in the same lane and breaks out of the loop
                 }
             }
 
             if(count == 0) //no vehicles in the specified lane
             {
-                return nextAvailablePosition = 0;
+                nextAvailablePosition = 0;
+                return nextAvailablePosition;
             }
             else
             {
-                return nextAvailablePosition = vehiclePosition + drivingGap;
+                nextAvailablePosition = vehiclePosition + drivingGap;
+                return nextAvailablePosition;
             }
         }
     }

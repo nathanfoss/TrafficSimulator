@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TrafficApplication
@@ -21,34 +22,52 @@ namespace TrafficApplication
         }
         private void TrafficForm_Paint(object sender, PaintEventArgs e)
         {
-            paintTraffic();
-            Invalidate(); //doesn't work...
+            
         }
+
 
         /// <summary>
         /// Creates graphics for each of the Vehicles created by the TrafficBuilder object
         /// </summary>
-        private void paintTraffic()
+        private void paintTraffic(Road road, List<Vehicle> vehicles)
         {
             
             using (Graphics g = CreateGraphics())
             {
                 Vehicle tempVehicle;
-                TrafficBuilder builder = new TrafficBuilder(2, 65, 50);
-                List<Vehicle> vehicles = builder.GetVehicles();
-                Vehicle[] traffic = vehicles.ToArray();
                 int x = 0;
                 int y = 0;
+                int index = 0;
                 int vehicleSize = 0;
+                Type type;
+                Color color;
+                Color[] colors = { Color.Red, Color.Green, Color.Blue, Color.Lime, Color.Orange, Color.Fuchsia };
 
-                for (int i = 0; i < traffic.Length; i++)
+                Refresh();
+                for (int i = 0; i < vehicles.Count; i++)
                 {
-                    tempVehicle = traffic[i];
+                    tempVehicle = vehicles[i];
+                    type = tempVehicle.GetVehicleType();
+                    index = (int)type;
+                    color = colors[index];
                     x = tempVehicle.GetPosition();
                     y = tempVehicle.GetLane() * 100;
                     vehicleSize = tempVehicle.GetSize();
-                    g.FillRectangle(new SolidBrush(Color.Black), x, y, vehicleSize, 20);
+                    g.FillRectangle(new SolidBrush(color), x, y, vehicleSize, 20);
                 }
+                
+            }
+        }
+
+        private async void SimulateTraffic(Road road, List<Vehicle> vehicles)
+        {
+            TrafficHandler handler = new TrafficHandler(road, vehicles);
+            paintTraffic(road, vehicles);
+            while (true)
+            {
+                await Task.Delay(33);
+                vehicles = handler.IterateTraffic();
+                paintTraffic(road, vehicles);
             }
         }
 
@@ -61,8 +80,11 @@ namespace TrafficApplication
         private void button1_Click(object sender, EventArgs e)
         {
             button1.Hide();
-            paintTraffic();
-            
+            Road road = new Road(2, 65);
+            TrafficBuilder builder = new TrafficBuilder(road, 10);
+            List<Vehicle> vehicles = builder.GetVehicles();
+            SimulateTraffic(road, vehicles);
+
         }
     }
 

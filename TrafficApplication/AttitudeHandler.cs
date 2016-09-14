@@ -84,5 +84,40 @@
                     }
             }
         }
+
+        /// <summary>
+        /// Assigns a new attitude to the driver based on traffic conditions
+        /// </summary>
+        /// <param name="attitudeAdjust">The adjustment to the driver's attitude based on traffic conditions</param>
+        /// <param name="attitude">The current attitude of the driver</param>
+        /// <returns></returns>
+        public Attitude ChangeAttitude(int attitudeAdjust, Attitude attitude)
+        {
+            int newAttitude = (int)attitude + attitudeAdjust;
+            if(newAttitude <= 0) //Attitude is or is better than the best attitude
+            {
+                return Attitude.HAPPY;
+            }
+            else if(newAttitude == 1)
+            {
+                return Attitude.CALM;
+            }
+            else if (newAttitude == 2)
+            {
+                return Attitude.AVERAGE;
+            }
+            else if (newAttitude == 3)
+            {
+                return Attitude.NERVOUS;
+            }
+            else if (newAttitude == 4)
+            {
+                return Attitude.RUSHED;
+            }
+            else //Attitude is or is worse than the worst possible attitude
+            {
+                return Attitude.ROAD_RAGE;
+            }
+        }
     }
 }

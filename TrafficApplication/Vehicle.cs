@@ -3,7 +3,7 @@
     /// <summary>
     /// Class representing vehicle objects in the Traffic simulator
     /// </summary>
-    class Vehicle
+    class Vehicle 
     {
         private Type Type;
         private int Size;
@@ -74,6 +74,15 @@
         }
 
         /// <summary>
+        /// Retrieves the Type of Vehicle
+        /// </summary>
+        /// <returns>The enumerated Type value of the Vehicle</returns>
+        public Type GetVehicleType()
+        {
+            return Type;
+        }
+
+        /// <summary>
         /// Retrieves the driving velocity of the vehicle
         /// </summary>
         /// <returns>Integer value of the vehicle's actual velocity in mph</returns>
@@ -82,19 +91,40 @@
             return ActualVelocity;
         }
 
-        //Somehow figure out where all the other cars are
+        /// <summary>
+        /// Sets the Actual Velocity to a specified velocity value in mph
+        /// </summary>
+        /// <param name="velocity">The new velocity of a vehicle in mph</param>
+        public void SetActualVelocity(int velocity)
+        {
+            ActualVelocity = velocity;
+        }
+
+        /// <summary>
+        /// Moves the Vehicle to a new position on the road
+        /// </summary>
+        /// <param name="newPosition">The new position on the road of the vehicle</param>
+        public void SetPosition(int newPosition)
+        {
+            Position = newPosition;
+        }
+
+        /// <summary>
+        /// Allows a vehicle to change lanes
+        /// </summary>
+        /// <param name="newLane">The new lane the vehicle will change to</param>
         public void ChangeLanes(int newLane)
         {
             if (DrivingLane != newLane) //in case something went wrong
             {
-                if(CanChangeLanes(newLane))
+                if (CanChangeLanes(newLane))
                 {
                     DrivingLane = newLane;
                 }
             }
         }
-        
-        
+
+
         /// <summary>
         /// Sets the desired velocity of the vehicle based on driver personality and the speed limit
         /// of the road
@@ -102,7 +132,7 @@
         /// <param name="road">The road the vehicle is driving on</param>
         /// <param name="driver">The driver of the vehicle with specified personality</param>
         /// <returns>The driver's desired velocity if no traffic based on personality in mph</returns>
-        private int SetDesiredVelocity(Road road, Driver driver)
+        public int SetDesiredVelocity(Road road, Driver driver)
         {
             int desiredVelocity = road.GetSpeedLimit(); // initialized to the speedLimit
             SpeedHandler = new SpeedHandler(driver.GetSpeed());
@@ -113,7 +143,7 @@
             }
 
             return desiredVelocity += SpeedAdjust;
-                
+
         }
 
         private bool CanChangeLanes(int newLane)
@@ -124,7 +154,9 @@
         }
 
         //write a method to handle passing and changing back to original lane when finished
-        
+
         //When cars in the same lane are close together, compare velocities and check canChangeLanes
+
+
     }
 }
