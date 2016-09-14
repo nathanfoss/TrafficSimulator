@@ -25,6 +25,17 @@ namespace TrafficApplication
             return Vehicles;
         }
 
+        public List<Vehicle> ResetTraffic()
+        {
+            int position = 0;
+            for(int i = 0; i < Vehicles.Count; i++)
+            {
+                position = Vehicles[i].GetPosition();
+                Vehicles[i].SetPosition(position - 17);
+            }
+            return Vehicles;
+        }
+
         private void SortList(List<Vehicle> vehicles)
         {
             Vehicles = vehicles.OrderBy(o => o.GetPosition()).ToList();

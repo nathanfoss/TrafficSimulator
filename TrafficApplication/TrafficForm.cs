@@ -61,12 +61,19 @@ namespace TrafficApplication
 
         private async void SimulateTraffic(Road road, List<Vehicle> vehicles)
         {
+            Int32 startTime = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            Int32 currentTime;
             TrafficHandler handler = new TrafficHandler(road, vehicles);
             paintTraffic(road, vehicles);
             while (true)
             {
-                await Task.Delay(33);
+                await Task.Delay(15);
                 vehicles = handler.IterateTraffic();
+                currentTime = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                if ((currentTime - startTime) % 6 == 5 )
+                { //Somehow get the system to reset every 6 seconds
+                    vehicles = handler.ResetTraffic();
+                }
                 paintTraffic(road, vehicles);
             }
         }
