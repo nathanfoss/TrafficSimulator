@@ -90,6 +90,15 @@
         {
             return ActualVelocity;
         }
+        
+        /// <summary>
+        /// Retrieves the desired velocity based on the Driver's personality
+        /// </summary>
+        /// <returns>Integer value of the vehicle's desired velocity in mph</returns>
+        public int GetDesiredVelocity()
+        {
+            return DesiredVelocity;
+        }
 
         /// <summary>
         /// Sets the Actual Velocity to a specified velocity value in mph
@@ -117,10 +126,7 @@
         {
             if (DrivingLane != newLane) //in case something went wrong
             {
-                if (CanChangeLanes(newLane))
-                {
-                    DrivingLane = newLane;
-                }
+                DrivingLane = newLane;
             }
         }
 

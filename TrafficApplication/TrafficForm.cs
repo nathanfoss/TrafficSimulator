@@ -46,6 +46,7 @@ namespace TrafficApplication
                 Refresh();
                 for (int i = 0; i < vehicles.Count; i++)
                 {
+                    //BUG: vehicles going from off-screen to on-sreen will collide with vehicles in front of them
                     tempVehicle = vehicles[i];
                     type = tempVehicle.GetVehicleType();
                     index = (int)type;
@@ -71,7 +72,7 @@ namespace TrafficApplication
                 vehicles = handler.IterateTraffic();
                 currentTime = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                 if ((currentTime - startTime) % 6 == 5 )
-                { //Somehow get the system to reset every 6 seconds
+                {
                     vehicles = handler.ResetTraffic();
                 }
                 paintTraffic(road, vehicles);
